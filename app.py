@@ -33,27 +33,28 @@ AD_LINK = st.secrets.get("AD_LINK", "https://example.com")
 # 33行目あたりから下に追加してください
 
 # --- 簡単なUI表示 ---
-st.title(BRAND_NAME)
+import streamlit as st
 
+st.title("🔮 AI統合占いアプリ")
+
+# 名前入力
 name = st.text_input("お名前を入力してください", key="name_input")
 
 if name:
     st.write(f"こんにちは、{name}さん！占いを始めましょう。")
-    
-    # ここから相談内容入力を追加（34〜36行目くらい）
-    question = st.text_input("相談内容を入力してください")
-    
-    # ボタン追加（37行目あたり）
-    if st.button("占いを開始する"):
+
+    # 相談内容入力
+    question = st.text_input("相談内容を入力してください", key="question_input")
+
+    # 占い開始ボタン
+    if st.button("占いを開始する", key="start_button"):
         if not question:
             st.warning("相談内容を入力してください")
         else:
-            # 仮の占い関数呼び出し（38〜41行目）
             reading = generate_reading_stub(name, question)
             st.subheader("🔮 占断結果")
             st.write(reading)
 
-# 占い関数はファイルの最後のほう、50行目以降などに定義してください
 def generate_reading_stub(name, question):
     return f"{name}さんのご相談「{question}」について占いました。結果は良好です。"
 # --- ここから簡単なUI表示 ---
@@ -61,7 +62,7 @@ st.title(BRAND_NAME)
 
 st.write("🔮 AI統合占いアプリへようこそ！")
 
-name = st.text_input("お名前を入力してください", key="name_input")
+name = st.text_input("お名前を入力してください", key="name_input_2")
 
 
 if name:
