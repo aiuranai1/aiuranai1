@@ -49,7 +49,18 @@ if name:
     birth_time = st.time_input("出生時間を入力してください（例: 12:59）", key="birth_time_input")
     birth_place = st.text_input("出生地（市区町村まで）を入力してください", key="birth_place_input")
     question = st.text_input("相談内容を入力してください", key="question_input")
+import datetime
+import streamlit as st
 
+today = datetime.date.today()
+min_date = today.replace(year=today.year - 100)  # 100年前
+
+birth_date = st.date_input(
+    "生年月日を選択してください",
+    min_value=min_date,
+    max_value=today,
+    key="birth_date_input"
+)
     if st.button("占いを開始する", key="start_button"):
         if not question:
             st.warning("相談内容を入力してください")
