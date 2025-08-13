@@ -103,7 +103,11 @@ def generate_reading(prompt: str, mode="free") -> str:
     if not OPENAI_API_KEY:
         # ダミー
         body = (
-            "【総合鑑定結果】
+            """【総合鑑定結果】
+ここにダミーテキストを入れてください。
+複数行の文章を書けます。
+"""
+        )
 "
             "変化は穏やかに進行。既存の強みを磨くほど成果が出やすい流れです。
 
