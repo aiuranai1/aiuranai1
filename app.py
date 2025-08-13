@@ -46,7 +46,6 @@ name = st.text_input("お名前を入力してください", key="name_input")
 
 if some_condition:
     birth_date = st.date_input("生年月日を選択してください", key="birth_date_input_1")
-another_date = st.date_input("別の日付を入力してください", key="birth_date_input_2")
     birth_time = st.time_input("出生時間を入力してください（例: 12:59）", key="birth_time_input")
     birth_place = st.text_input("出生地（市区町村まで）を入力してください", key="birth_place_input")
     question = st.text_input("相談内容を入力してください", key="question_input")
