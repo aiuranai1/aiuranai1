@@ -208,4 +208,5 @@ def navamsa_sign_index(longitude):
     # 各ラシ30度、ナヴァムシャは3°20' = 3.333... 度
     rasi = rasi_sign_index(longitude)
     deg_in_sign = normalize_deg(longitude) - rasi*30
-    pada = int(deg_in_sign // (3
+    pada = int(deg_in_sign // 3.3333333)
+    return pada
