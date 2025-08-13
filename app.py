@@ -31,6 +31,17 @@ PREMIUM_ACCESS_CODES = set(st.secrets.get("PREMIUM_ACCESS_CODES", []))
 BRAND_NAME = st.secrets.get("BRAND_NAME", "AI統合占い")
 AD_LINK = st.secrets.get("AD_LINK", "https://example.com")
 
+# --- ここから簡単なUI表示 ---
+st.title(BRAND_NAME)
+
+st.write("🔮 AI統合占いアプリへようこそ！")
+
+name = st.text_input("お名前を入力してください")
+
+if name:
+    st.write(f"こんにちは、{name}さん！占いを始めましょう。")
+
+st.write(f"現在のセッション履歴数: {len(st.session_state.history)}")
 # =============== 78枚タロット定義 ===============
 MAJOR = ["愚者","魔術師","女教皇","女帝","皇帝","法王","恋人","戦車","力","隠者","運命の輪","正義","吊るされた男","死神","節制","悪魔","塔","星","月","太陽","審判","世界"]
 SUITS = {
