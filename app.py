@@ -61,7 +61,7 @@ birth_date = st.date_input(
     max_value=today,
     key="birth_date_input"
 )
-    if st.button("占いを開始する", key="start_button"):
+if st.button("占いを開始する", key="start_button"):
     if not question:
         st.warning("相談内容を入力してください")
     else:
