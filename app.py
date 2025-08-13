@@ -35,7 +35,7 @@ AD_LINK = st.secrets.get("AD_LINK", "https://example.com")
 # --- 簡単なUI表示 ---
 st.title(BRAND_NAME)
 
-name = st.text_input("お名前を入力してください")
+name = st.text_input("お名前を入力してください", key="name_input")
 
 if name:
     st.write(f"こんにちは、{name}さん！占いを始めましょう。")
@@ -61,7 +61,8 @@ st.title(BRAND_NAME)
 
 st.write("🔮 AI統合占いアプリへようこそ！")
 
-name = st.text_input("お名前を入力してください")
+name = st.text_input("お名前を入力してください", key="name_input")
+
 
 if name:
     st.write(f"こんにちは、{name}さん！占いを始めましょう。")
