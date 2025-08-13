@@ -75,8 +75,7 @@ def render_cards(cards):
     for name, pos in cards:
         tip = CARD_MEANINGS.get(name.split("(")[0], "")
         items.append(f"{name}（{pos}）" + (f" — {tip}" if tip else ""))
-    return "
-".join(["・" + it for it in items])
+    return "\n".join(["・" + it for it in items])
 
 # =============== 占断生成（OpenAI or ダミー） ===============
 
