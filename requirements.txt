@@ -1,7 +1,7 @@
 streamlit
-openai
+fpdf
 swisseph
-pytz
 geopy
 timezonefinder
-Pillow
+pytz
+openai
