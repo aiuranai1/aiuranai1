@@ -145,8 +145,7 @@ def build_pdf(title: str, body: str) -> bytes:
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.set_font('Arial', size=12)
     pdf.cell(0, 10, txt=title, ln=True)
-    for line in body.split('
-'):
+    for line in body.split('\n'):
         pdf.multi_cell(0, 8, line)
     return pdf.output(dest='S').encode('latin-1', errors='ignore')
 
