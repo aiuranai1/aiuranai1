@@ -108,7 +108,6 @@ def generate_reading(prompt: str, mode="free") -> str:
 複数行の文章を書けます。
 """
         )
-"
             "変化は穏やかに進行。既存の強みを磨くほど成果が出やすい流れです。
 
 "
