@@ -62,12 +62,12 @@ birth_date = st.date_input(
     key="birth_date_input"
 )
     if st.button("占いを開始する", key="start_button"):
-        if not question:
-            st.warning("相談内容を入力してください")
-        else:
-            reading = generate_reading_stub(name, question, birth_date, birth_time, birth_place)
-            st.subheader("🔮 占断結果")
-            st.write(reading)
+    if not question:
+        st.warning("相談内容を入力してください")
+    else:
+        reading = generate_reading_stub(name, question, birth_date, birth_time, birth_place)
+        st.subheader("🔮 占断結果")
+        st.write(reading)
 
 def generate_reading_stub(name, question, birth_date, birth_time, birth_place):
     return (f"{name}さんのご相談「{question}」について占いました。\n"
