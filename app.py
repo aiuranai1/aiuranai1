@@ -35,35 +35,28 @@ AD_LINK = st.secrets.get("AD_LINK", "https://example.com")
 # --- 簡単なUI表示 ---
 import streamlit as st
 
+def generate_reading_stub(name, question, birth_date, birth_time, birth_place):
+    return (f"{name}さんのご相談「{question}」について占いました。\n"
+            f"生年月日: {birth_date}\n出生時間: {birth_time}\n出生地: {birth_place}\n"
+            "結果は良好です。")
+
 st.title("🔮 AI統合占いアプリ")
 
-# 名前入力（1回だけ）
 name = st.text_input("お名前を入力してください", key="name_input")
 
 if name:
-    st.write(f"こんにちは、{name}さん！占いを始めましょう。")
-
-    # 生年月日入力
     birth_date = st.date_input("生年月日を選択してください", key="birth_date_input")
-
-    # 出生時間入力
     birth_time = st.time_input("出生時間を入力してください（例: 12:59）", key="birth_time_input")
-
-    # 出生地入力
     birth_place = st.text_input("出生地（市区町村まで）を入力してください", key="birth_place_input")
-
-    # 相談内容
     question = st.text_input("相談内容を入力してください", key="question_input")
 
     if st.button("占いを開始する", key="start_button"):
-        # ここで入力データをまとめて占い処理を呼び出す
         if not question:
             st.warning("相談内容を入力してください")
         else:
             reading = generate_reading_stub(name, question, birth_date, birth_time, birth_place)
             st.subheader("🔮 占断結果")
             st.write(reading)
-
 
 def generate_reading_stub(name, question, birth_date, birth_time, birth_place):
     return (f"{name}さんのご相談「{question}」について占いました。\n"
