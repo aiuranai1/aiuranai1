@@ -101,53 +101,41 @@ def compose_prompt(name, birth, question, cards, mode="free"):
 
 def generate_reading(prompt: str, mode="free") -> str:
     if not OPENAI_API_KEY:
-        # ダミー
+        # ダミーの返答（無料版・有料版で文字量を分ける）
         body = (
-            """【総合鑑定結果】
-ここにダミーテキストを入れてください。
-複数行の文章を書けます。
-"""
-        )
-            "変化は穏やかに進行。既存の強みを磨くほど成果が出やすい流れです。
+            """変化は穏やかに進行。既存の強みを磨くほど成果が出やすい流れです。
+● 恋愛: 小さな誤解は早期解消が鍵。共通の体験作りを。
+● 仕事: 既存顧客の深堀りが売上に直結。提案書を簡潔に。
+● 金運: 小さな固定費の見直しで可処分が増える。
+● 対人: 主張<傾聴。相手の意図を言い換えて確認。
+● 今月の鍵: 朝の散歩とメモ習慣。
 
-"
-            "● 恋愛: 小さな誤解は早期解消が鍵。共通の体験作りを。
-"
-            "● 仕事: 既存顧客の深堀りが売上に直結。提案書を簡潔に。
-"
-            "● 金運: 小さな固定費の見直しで可処分が増える。
-"
-            "● 対人: 主張<傾聴。相手の意図を言い換えて確認。
-"
-            "● 今月の鍵: 朝の散歩とメモ習慣。
-
-"
-            "■ 行動
+■ 行動
 ・週3で作品発信
 ・既存案件の再編集提案
 ・小口メニューを用意し受注口を増やす
 
-前向きな一言: 丁寧な積み重ねが最短の近道です。"
+前向きな一言: 丁寧な積み重ねが最短の近道です。
+"""
         )
-        return body if mode=="free" else body + "
-
-【詳細補足】コラボ提案は今期の追い風…"
-
+        if mode == "free":
+            return body
+        else:
+            return body + "\n\n【詳細補足】コラボ提案は今期の追い風。積極的に動くのが吉です。"
     try:
         import openai
         openai.api_key = OPENAI_API_KEY
         completion = openai.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role":"system","content":"あなたは優秀な占い師です。"},
-                {"role":"user","content": prompt}
+                {"role": "system", "content": "あなたは優秀な占い師です。"},
+                {"role": "user", "content": prompt}
             ],
             temperature=0.8,
         )
         return completion.choices[0].message.content
     except Exception as e:
-        return f"（AI生成エラー: {e}）
-フォールバックメッセージ: 調整と整えがテーマです…"
+        return f"（AI生成エラー: {e}）\nフォールバックメッセージ: 調整と整えがテーマです…"
 
 # =============== PDF出力 ===============
 
